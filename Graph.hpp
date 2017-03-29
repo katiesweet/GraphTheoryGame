@@ -5,13 +5,13 @@
 class Graph {
 public:
   Graph(int numVertices);
-  void displayGraph();
+  void displayGraph(std::string fileName);
   bool validMove(int i, int j);
   bool colorEdge(int i, int j);
   int whoseTurnIsNext();
   int turn;
   int hasWinningStrategy;
-  std::vector<Graph> childGraphs;
+  std::vector<std::shared_ptr<Graph>> childGraphs;
 
 private:
   std::vector<int> vertices;

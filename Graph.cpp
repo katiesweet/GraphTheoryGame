@@ -1,10 +1,5 @@
 #include "Graph.hpp"
 
-int counter() {
-  static int i = 0;
-  return ++i;
-}
-
 Graph::Graph(int numVertices) : turn(1), hasWinningStrategy(0) {
   adjacencyMatrix.resize(numVertices);
   for (auto &&vector : adjacencyMatrix) {
@@ -19,8 +14,8 @@ Graph::Graph(int numVertices) : turn(1), hasWinningStrategy(0) {
   }
 }
 
-void Graph::displayGraph() {
-  std::string fileName = "graph" + std::to_string(counter()) + ".dot";
+void Graph::displayGraph(std::string fileName) {
+  // std::string fileName = "graph" + std::to_string(counter()) + ".dot";
   std::ofstream file(fileName);
   file << "strict graph {" << std::endl;
   for (int i = 0; i < vertices.size(); ++i) {
@@ -56,7 +51,7 @@ bool Graph::checkGameOver() {
           } else {
             hasWinningStrategy = 1;
           }
-          displayGraph();
+          // displayGraph();
           return true;
         }
       }
